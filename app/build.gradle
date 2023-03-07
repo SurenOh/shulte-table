@@ -9,6 +9,7 @@ ext {
     navigationVersion = "2.5.3"
     koinVersion = "3.0.1"
     lottieVersion = "3.4.0"
+    roomVersion = "2.4.3"
 }
 android {
     compileSdk 32
@@ -54,6 +55,9 @@ dependencies {
 
     implementation "io.insert-koin:koin-core:$koinVersion"
     implementation "io.insert-koin:koin-android:$koinVersion"
+
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
 
     implementation "com.airbnb.android:lottie:$lottieVersion"
 

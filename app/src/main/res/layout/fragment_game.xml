@@ -61,4 +61,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
+    <TextView
+        android:id="@+id/victory_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="50sp"
+        android:fontFamily="@font/shantell_sans_extrabold"
+        android:textColor="@color/white"
+        android:background="@color/primary"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/end_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ok"
+        app:layout_constraintTop_toBottomOf="@id/victory_tv"
+        app:layout_constraintStart_toStartOf="@id/victory_tv"
+        app:layout_constraintEnd_toEndOf="@id/victory_tv"
+        android:visibility="gone"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

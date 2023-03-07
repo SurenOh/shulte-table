@@ -1,5 +1,6 @@
 package com.example.shultetable.ui.game
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.Gravity
@@ -10,21 +11,22 @@ import android.view.ViewGroup
 import android.widget.GridLayout
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
+import androidx.core.view.isVisible
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.shultetable.R
 import com.example.shultetable.databinding.FragmentGameBinding
+import com.example.shultetable.model.RecordModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class GameFragment : Fragment() {
     private lateinit var binding: FragmentGameBinding
 
-    private lateinit var viewModel: GameViewModel
     private val args: GameFragmentArgs by navArgs()
+    private val viewModel: GameViewModel by viewModel()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentGameBinding.inflate(layoutInflater)
-        viewModel = ViewModelProvider(this)[GameViewModel::class.java]
 
         return binding.root
     }
@@ -41,7 +43,7 @@ class GameFragment : Fragment() {
     private fun saveResult() {
         binding.resultTime.setOnChronometerTickListener {
             val elapsedMillis = (SystemClock.elapsedRealtime() - binding.resultTime.base)
-            viewModel.saveResultTime(elapsedMillis)
+            viewModel.saveResultTime(RecordModel(args.level, elapsedMillis))
         }
     }
 
@@ -69,6 +71,9 @@ class GameFragment : Fragment() {
         binding.backBtn.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.endBtn.setOnClickListener {
+            findNavController().navigate(GameFragmentDirections.actionGameFragmentToHomeFragment())
+        }
     }
 
     private fun setupGameTable(gameColumns: Int, gameRows: Int) {
@@ -85,10 +90,15 @@ class GameFragment : Fragment() {
                 val column = GridLayout.spec(j, 1f)
                 val numberTv = createTextView(randomNumber)
                 numberTv.setOnClickListener {
-                    viewModel.checkNumber(randomNumber)
+                    viewModel.checkNumber(randomNumber, gameColumns * gameRows)
                     if (randomNumber == gameColumns * gameRows) {
+                        binding.resultTime.stop()
                         saveResult()
-
+                        with(binding.victoryTv) {
+                            binding.endBtn.isVisible = true
+                            isVisible = true
+                            text = binding.resultTime.text
+                        }
                     }
                 }
                 binding.gameTable.addView(numberTv, GridLayout.LayoutParams(row, column))
