@@ -23,6 +23,10 @@
             android:id="@+id/goToGame"
             app:destination="@id/gameFragment"
             app:popUpTo="@id/homeFragment" />
+        <action
+            android:id="@+id/goToRecords"
+            app:destination="@id/recordFragment"
+            app:popUpTo="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -33,7 +37,12 @@
             android:name="level"
             app:argType="string" />
         <action
-            android:id="@+id/action_gameFragment_to_homeFragment"
+            android:id="@+id/gameToHome"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/recordFragment"
+        android:name="com.example.shultetable.ui.records.RecordFragment"
+        android:label="fragment_record"
+        tools:layout="@layout/fragment_record" />
 </navigation>

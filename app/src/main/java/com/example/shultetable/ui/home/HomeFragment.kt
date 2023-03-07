@@ -39,7 +39,7 @@ class HomeFragment : Fragment() {
 
         }
         binding.recordsBtn.setOnClickListener {
-
+            findNavController().navigate(HomeFragmentDirections.goToRecords())
         }
     }
 

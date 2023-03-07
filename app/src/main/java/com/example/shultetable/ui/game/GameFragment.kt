@@ -1,6 +1,5 @@
 package com.example.shultetable.ui.game
 
-import android.opengl.Visibility
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.Gravity
@@ -40,30 +39,17 @@ class GameFragment : Fragment() {
         viewModel.startGame()
     }
 
-    private fun saveResult() {
-        binding.resultTime.setOnChronometerTickListener {
-            val elapsedMillis = (SystemClock.elapsedRealtime() - binding.resultTime.base)
-            viewModel.saveResultTime(RecordModel(args.level, elapsedMillis))
-        }
-    }
-
     private fun setupObservers() {
         viewModel.currentNumber.observe(viewLifecycleOwner) { currentNumber ->
-           binding.currentNumber.text = currentNumber.toString()
+            binding.currentNumber.text = currentNumber.toString()
         }
     }
 
     private fun setupGameLevel(level: String) {
         when (level) {
-            "easy" -> {
-                setupGameTable(EASY_COLUMN_COUNT, EASY_ROW_COUNT)
-            }
-            "hard" -> {
-                setupGameTable(HARD_COLUMN_COUNT, HARD_ROW_COUNT)
-            }
-            "expert" -> {
-                setupGameTable(EXPERT_COLUMN_COUNT, EXPERT_ROW_COUNT)
-            }
+            "easy" -> setupGameTable(EASY_COLUMN_COUNT, EASY_ROW_COUNT)
+            "hard" -> setupGameTable(HARD_COLUMN_COUNT, HARD_ROW_COUNT)
+            "expert" -> setupGameTable(EXPERT_COLUMN_COUNT, EXPERT_ROW_COUNT)
         }
     }
 
@@ -72,7 +58,7 @@ class GameFragment : Fragment() {
             findNavController().popBackStack()
         }
         binding.endBtn.setOnClickListener {
-            findNavController().navigate(GameFragmentDirections.actionGameFragmentToHomeFragment())
+            findNavController().navigate(GameFragmentDirections.gameToHome())
         }
     }
 
@@ -89,27 +75,32 @@ class GameFragment : Fragment() {
                 val row = GridLayout.spec(i, 1f)
                 val column = GridLayout.spec(j, 1f)
                 val numberTv = createTextView(randomNumber)
-                numberTv.setOnClickListener {
-                    viewModel.checkNumber(randomNumber, gameColumns * gameRows)
-                    if (randomNumber == gameColumns * gameRows) {
-                        binding.resultTime.stop()
-                        saveResult()
-                        with(binding.victoryTv) {
-                            binding.endBtn.isVisible = true
-                            isVisible = true
-                            text = binding.resultTime.text
-                        }
-                    }
-                }
                 binding.gameTable.addView(numberTv, GridLayout.LayoutParams(row, column))
                 numbers.remove(randomNumber)
+                numberTv.setOnClickListener {
+                    val currentNumber = binding.currentNumber.text.toString().toInt()
+                    if (randomNumber == gameColumns * gameRows && randomNumber == currentNumber) {
+                        binding.resultTime.stop()
+                        viewModel.saveResultTime(
+                            RecordModel(
+                                args.level,
+                                SystemClock.elapsedRealtime() - binding.resultTime.base
+                            )
+                        )
+                        binding.endBtn.isVisible = true
+                        binding.victoryTv.isVisible = true
+                        binding.victoryTv.text = binding.resultTime.text
+
+                    }
+                    viewModel.checkNumber(randomNumber, gameColumns * gameRows)
+                }
             }
         }
         binding.resultTime.start()
     }
 
     private fun createTextView(number: Int): TextView {
-         return TextView(requireContext()).apply {
+        return TextView(requireContext()).apply {
             text = number.toString()
             setBackgroundResource(R.drawable.rectangle_background)
             textSize = 24f
@@ -118,10 +109,10 @@ class GameFragment : Fragment() {
         }
     }
 
-    private fun fillNumbers(number: Int): HashSet<Int> {
-        val result = HashSet<Int>()
-        for (symbol in 1..number) {
-            result.add(symbol)
+    private fun fillNumbers(number: Int): ArrayList<Int> {
+        val result = ArrayList<Int>()
+        for (index in 1..number) {
+            result.add(index)
         }
         return result
     }
