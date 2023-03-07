@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ShulteTable</string>
+    <string name="easy">easy</string>
+    <string name="hard">hard</string>
+    <string name="expert">expert</string>
+    <string name="exit">exit</string>
+    <string name="records">records</string>
+    <string name="number_to_find">Number to find</string>
 </resources>
