@@ -7,6 +7,7 @@ import com.example.shultetable.mappers.RecordMapper
 import com.example.shultetable.repository.RecordRepository
 import com.example.shultetable.repository.RecordRepositoryImpl
 import com.example.shultetable.ui.game.GameViewModel
+import com.example.shultetable.ui.home.HomeViewModel
 import com.example.shultetable.ui.records.RecordViewModel
 import org.koin.android.ext.koin.androidApplication
 import org.koin.android.ext.koin.androidContext
@@ -35,4 +36,5 @@ val applicationModule = module {
     //ViewModels
     viewModel { GameViewModel(get()) }
     viewModel { RecordViewModel(get()) }
+    viewModel { HomeViewModel(get()) }
 }

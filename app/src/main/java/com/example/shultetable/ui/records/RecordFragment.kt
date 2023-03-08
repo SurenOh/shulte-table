@@ -39,13 +39,13 @@ class RecordFragment : Fragment() {
             records.forEach { model ->
                 when (model.level) {
                     "easy" -> {
-                        binding.easyResultTv.text = "${binding.easyResultTv.text}${getTimeFromMillis(model.millis)}"
+                        binding.easyResultTv.text = "${binding.easyResultTv.text} ${getTimeFromMillis(model.millis)}"
                     }
                     "hard" -> {
-                        binding.hardResultTv.text = "${binding.hardResultTv.text}${getTimeFromMillis(model.millis)}"
+                        binding.hardResultTv.text = "${binding.hardResultTv.text} ${getTimeFromMillis(model.millis)}"
                     }
                     "expert" -> {
-                        binding.expertResultTv.text = "${binding.expertResultTv.text}${getTimeFromMillis(model.millis)}"
+                        binding.expertResultTv.text = "${binding.expertResultTv.text} ${getTimeFromMillis(model.millis)}"
                     }
                 }
             }
@@ -60,6 +60,12 @@ class RecordFragment : Fragment() {
             seconds = (millis % 60_000 / 1000).toString()
         } else {
             seconds = (millis / 1000).toString()
+        }
+        if (minutes.length == 1) {
+            minutes = "0$minutes"
+        }
+        if (seconds.length == 1) {
+            seconds = "0$seconds"
         }
         return "$minutes:$seconds"
     }

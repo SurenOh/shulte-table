@@ -67,16 +67,17 @@ class GameFragment : Fragment() {
             columnCount = gameColumns
             rowCount = gameRows
         }
-        val numbers = fillNumbers(gameColumns * gameRows)
+        val allNumbers = fillNumbers(gameColumns * gameRows)
 
         for (i in 0 until gameRows) {
             for (j in 0 until gameColumns) {
-                val randomNumber = numbers.random()
-                val row = GridLayout.spec(i, 1f)
-                val column = GridLayout.spec(j, 1f)
+                val randomNumber = allNumbers.random()
                 val numberTv = createTextView(randomNumber)
-                binding.gameTable.addView(numberTv, GridLayout.LayoutParams(row, column))
-                numbers.remove(randomNumber)
+                binding.gameTable.addView(
+                    numberTv,
+                    GridLayout.LayoutParams(GridLayout.spec(i, 1f), GridLayout.spec(j, 1f))
+                )
+                allNumbers.remove(randomNumber)
                 numberTv.setOnClickListener {
                     val currentNumber = binding.currentNumber.text.toString().toInt()
                     if (randomNumber == gameColumns * gameRows && randomNumber == currentNumber) {
@@ -87,16 +88,19 @@ class GameFragment : Fragment() {
                                 SystemClock.elapsedRealtime() - binding.resultTime.base
                             )
                         )
-                        binding.endBtn.isVisible = true
-                        binding.victoryTv.isVisible = true
-                        binding.victoryTv.text = binding.resultTime.text
-
+                        showEndGame()
                     }
                     viewModel.checkNumber(randomNumber, gameColumns * gameRows)
                 }
             }
         }
         binding.resultTime.start()
+    }
+
+    private fun showEndGame() {
+        binding.endBtn.isVisible = true
+        binding.victoryTv.isVisible = true
+        binding.victoryTv.text = binding.resultTime.text
     }
 
     private fun createTextView(number: Int): TextView {

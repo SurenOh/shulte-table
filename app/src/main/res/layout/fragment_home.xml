@@ -4,49 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.HomeFragment"
-    android:background="@drawable/numbers_background">
+    android:background="@drawable/numbers_background"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/game_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/shantell_sans_extrabold"
+        android:text="@string/app_name"
+        android:textColor="@color/primary"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/easy_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="@font/shantell_sans_bold"
         android:text="@string/easy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/game_name" />
 
     <Button
         android:id="@+id/hard_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:backgroundTint="@color/gray"
         android:fontFamily="@font/shantell_sans_bold"
         android:text="@string/hard"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/easy_btn" />
+
+    <ImageView
+        android:id="@+id/hard_level_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lock"
+        app:layout_constraintStart_toEndOf="@id/hard_btn"
+        app:layout_constraintTop_toTopOf="@id/hard_btn" />
 
     <Button
         android:id="@+id/expert_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
+        android:backgroundTint="@color/gray"
         android:fontFamily="@font/shantell_sans_bold"
         android:text="@string/expert"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hard_btn" />
+
+    <ImageView
+        android:id="@+id/expert_level_lock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_lock"
+        app:layout_constraintStart_toEndOf="@id/expert_btn"
+        app:layout_constraintTop_toTopOf="@id/expert_btn" />
 
     <Button
         android:id="@+id/exit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/shantell_sans_bold"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="12dp"
+        android:fontFamily="@font/shantell_sans_bold"
         android:text="@string/exit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -55,10 +88,10 @@
         android:id="@+id/records_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/shantell_sans_bold"
-        android:text="@string/records"
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="12dp"
+        android:fontFamily="@font/shantell_sans_bold"
+        android:text="@string/records"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

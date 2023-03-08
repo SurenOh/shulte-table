@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ShulteTable</string>
+    <string name="app_name">Shulte Table</string>
     <string name="easy">easy</string>
     <string name="hard">hard</string>
     <string name="expert">expert</string>
@@ -7,7 +7,7 @@
     <string name="records">records</string>
     <string name="number_to_find">Number to find</string>
     <string name="ok">OK</string>
-    <string name="easy_best_time">Easy best time: </string>
-    <string name="hard_best_time">Hard best time: </string>
-    <string name="expert_best_time">Expert best time: </string>
+    <string name="easy_best_time">Easy best time:</string>
+    <string name="hard_best_time">Hard best time:</string>
+    <string name="expert_best_time">Expert best time:</string>
 </resources>
