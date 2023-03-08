@@ -10,4 +10,5 @@
     <string name="easy_best_time">Easy best time:</string>
     <string name="hard_best_time">Hard best time:</string>
     <string name="expert_best_time">Expert best time:</string>
+    <string name="back_to_game">back to game</string>
 </resources>

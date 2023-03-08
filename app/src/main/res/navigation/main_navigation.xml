@@ -11,8 +11,11 @@
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen" >
         <action
-            android:id="@+id/action_splashScreenFragment_to_homeFragment"
+            android:id="@+id/splashToHome"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/goToWeb"
+            app:destination="@id/webFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -45,4 +48,16 @@
         android:name="com.example.shultetable.ui.records.RecordFragment"
         android:label="fragment_record"
         tools:layout="@layout/fragment_record" />
+    <fragment
+        android:id="@+id/webFragment"
+        android:name="com.example.shultetable.ui.web.WebFragment"
+        android:label="fragment_web"
+        tools:layout="@layout/fragment_web" >
+        <argument
+            android:name="link"
+            app:argType="string" />
+        <action
+            android:id="@+id/webToHome"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

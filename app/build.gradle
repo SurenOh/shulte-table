@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
+    id 'com.google.gms.google-services'
 }
 ext {
     kotlinVersion = "1.7.0"
@@ -10,6 +11,7 @@ ext {
     koinVersion = "3.0.1"
     lottieVersion = "3.4.0"
     roomVersion = "2.4.3"
+    firebaseVersion = "19.1.1"
 }
 android {
     compileSdk 32
@@ -58,6 +60,8 @@ dependencies {
 
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
+
+    implementation "com.google.firebase:firebase-config-ktx:$firebaseVersion"
 
     implementation "com.airbnb.android:lottie:$lottieVersion"
 

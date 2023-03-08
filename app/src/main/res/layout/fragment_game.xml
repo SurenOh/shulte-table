@@ -7,7 +7,6 @@
     android:background="@drawable/numbers_background"
     tools:context=".ui.game.GameFragment">
 
-
     <ImageButton
         android:id="@+id/back_btn"
         android:layout_width="wrap_content"
@@ -74,6 +73,7 @@
         android:textColor="@color/white"
         android:background="@color/primary"
         android:visibility="gone"/>
+
     <Button
         android:id="@+id/end_btn"
         android:layout_width="0dp"
@@ -83,6 +83,5 @@
         app:layout_constraintStart_toStartOf="@id/victory_tv"
         app:layout_constraintEnd_toEndOf="@id/victory_tv"
         android:visibility="gone"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
