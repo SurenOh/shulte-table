@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "664487939235",
+    "project_id": "shultetable-6eb91",
+    "storage_bucket": "shultetable-6eb91.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:664487939235:android:d4d7859450dab30f08c316",
+        "android_client_info": {
+          "package_name": "com.example.shultetable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "664487939235-dk1vd4mlmq6nrgh7vksah1vdcsf0vsqg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBunHwT8y94dhbmVO5E_Bo4kRvIXQjy7lM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "664487939235-dk1vd4mlmq6nrgh7vksah1vdcsf0vsqg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
